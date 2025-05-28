@@ -1,3 +1,6 @@
+document.getElementById("msg").textContent = "JavaScript is working!";
+
+
 "use client";
 import React from "react";
 
