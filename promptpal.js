@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>PromptPal</title>
-</head>
-<body>
-
-  <script src="promptpal.js"></script>
-</body>
-</html>
-
-
-
 "use client";
 import React from "react";
 
