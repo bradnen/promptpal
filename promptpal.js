@@ -1,16 +1,12 @@
-document.getElementById("msg").textContent = "JavaScript is working!";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useUser } from "some-auth-library"; // adjust this import based on your auth method
+import { useHandleStreamResponse } from "../utilities/runtime-helpers"; // keep your existing import
 
-
-"use client";
-import React from "react";
-
-import { useHandleStreamResponse } from "../utilities/runtime-helpers";
-
-function MainComponent() {
+function App() {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const { data: user } = useUser();
+  const { data: user } = useUser(); // adjust or remove if you don’t use auth
   const messagesEndRef = useRef(null);
   const [streamingMessage, setStreamingMessage] = useState("");
 
@@ -49,18 +45,14 @@ function MainComponent() {
     try {
       const response = await fetch("/integrations/chat-gpt/conversationgpt4", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [{ role: "user", content: inputMessage }],
           stream: true,
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to get response");
-      }
+      if (!response.ok) throw new Error("Failed to get response");
 
       handleStreamResponse(response);
     } catch (error) {
@@ -194,4 +186,4 @@ function MainComponent() {
   );
 }
 
-export default MainComponent;
+export default App;
