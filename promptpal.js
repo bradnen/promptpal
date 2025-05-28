@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My GitHub Page</title>
+  <title>PromptPal</title>
 </head>
 <body>
-  <h1>Hello from GitHub Pages!</h1>
-  <script src="script.js"></script>
+
+  <script src="promptpal.js"></script>
 </body>
 </html>
 
